@@ -18,8 +18,6 @@ Input: nums = [0]
 Output: []
 
 '''
-
-
 class Solution(object):
     def threeSum(self, nums):
         """
@@ -32,6 +30,9 @@ class Solution(object):
         
         for i in range(len(nums)-2):
             
+            #If number at i and i-1 index are same
+            #the continue statement would skip the code below it and will start over 
+            #from the next loop
             if i>0 and nums[i] == nums[i-1]:
                 continue
             
@@ -46,6 +47,7 @@ class Solution(object):
                     right -= 1
                 elif  currSum == 0:
                     output.append([nums[i],nums[left],nums[right]])
+                    #The while loops below are executed so as to avoid duplicates in the output
                     while left > right and nums[left] == nums[left+1]:
                         left +=1
                     while left > right and nums[right] == nums[right-1]:
