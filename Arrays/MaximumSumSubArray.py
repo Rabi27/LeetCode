@@ -20,9 +20,7 @@ Output: 0
 
 
 class Solution:
-    def maxSubArray(self, nums: List[int]) -> int:
-        
-        class Solution:
+    
     def maxSubArray(self, nums: List[int]) -> int:
         
         curr_sum = nums[0]
