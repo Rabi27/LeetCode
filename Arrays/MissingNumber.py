@@ -38,18 +38,21 @@ All the numbers of nums are unique.
 
 
 
+'''
+Solution with Gauss Formula
+One of the most well-known stories in mathematics is of a young Gauss, forced to find the sum of the first 100 natural numbers by a lazy teacher. Rather than add the numbers by hand, he deduced a closed-form expression for the sum, or so the story goes. You can see the formula below:
+
+Sigma Notion = n(n+1)/2
+
+'''
+
+
 class Solution:
     def missingNumber(self, nums: List[int]) -> int:
         
-        nums.sort()
+        expectedsum = len(nums)*(len(nums)+1)//2
+        actualsum = sum(nums)
         
-        if nums[0] != 0:
-            return 0
+        return expectedsum - actualsum
         
-        for i in range(len(nums)-1):
-            
-            if nums[i+1] != nums[i]+1:
-                return nums[i]+1
-            
-        return nums[-1]+1
         
