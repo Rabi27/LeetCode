@@ -20,37 +20,26 @@ Output: ["h","a","n","n","a","H"]
 
 
 '''
-Two Pointers Approach
+Recursive Approach
 
-In this approach, two pointers are used to process two array elements at the same time. Usual implementation is to set one pointer in the beginning and one at the end and then to move them until they both meet.
+Here is an example. Let's implement recursive function helper which receives two pointers, left and right, as arguments.
 
-Sometimes one needs to generalize this approach in order to use three pointers, like for classical Sort Colors problem.
+Base case: if left >= right, do nothing.
 
-Algorithm
+Otherwise, swap s[left] and s[right] and call helper(left + 1, right - 1).
 
-Set pointer left at index 0, and pointer right at index n - 1, where n is a number of elements in the array.
-
-While left < right:
-
-Swap s[left] and s[right].
-
-Move left pointer one step right, and right pointer one step left.
-
+To solve the problem, call helper function passing the head and tail indexes as arguments: return helper(0, len(s) - 1).
 
 '''
 
 class Solution:
     def reverseString(self, s: List[str]) -> None:
-        """
-        Do not return anything, modify s in-place instead.
-        """
         
-        left,right = 0,len(s)-1
+        def helper(left,right):
+            if left < right:
+                s[left],s[right] = s[right],s[left]
+                helper(left+1,right-1)
+                
+        helper(0,len(s)-1)
         
-        while left<right:
-            
-            s[left],s[right] = s[right],s[left]
-            left += 1
-            right -= 1
-            
-        s
+        
