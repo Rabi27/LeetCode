@@ -19,10 +19,38 @@ Output: ["h","a","n","n","a","H"]
 '''
 
 
+'''
+Two Pointers Approach
+
+In this approach, two pointers are used to process two array elements at the same time. Usual implementation is to set one pointer in the beginning and one at the end and then to move them until they both meet.
+
+Sometimes one needs to generalize this approach in order to use three pointers, like for classical Sort Colors problem.
+
+Algorithm
+
+Set pointer left at index 0, and pointer right at index n - 1, where n is a number of elements in the array.
+
+While left < right:
+
+Swap s[left] and s[right].
+
+Move left pointer one step right, and right pointer one step left.
+
+
+'''
+
 class Solution:
     def reverseString(self, s: List[str]) -> None:
         """
         Do not return anything, modify s in-place instead.
         """
         
-        s.reverse()
+        left,right = 0,len(s)-1
+        
+        while left<right:
+            
+            s[left],s[right] = s[right],s[left]
+            left += 1
+            right -= 1
+            
+        s
