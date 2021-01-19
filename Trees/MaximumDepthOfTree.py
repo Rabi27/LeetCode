@@ -35,18 +35,29 @@ Output: 1
 class Solution:
     def maxDepth(self, root: TreeNode) -> int:
         
-            if root is None:
-                return 0
+        if root is None:
+            return 0
+        
+        queue = [root]
+        result = []
+        counter = 0
+        while queue != []:
             
-            if root.left == None and root.right == None:
-                return 1
+            
+            for i in range(len(queue)):
+                node = queue[0]
+                del queue[0]
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+             
+            counter += 1
+            result.append(counter)
             
             
-            left = root.left
-            right = root.right
+        return max(result)
+                
+        
             
-            h_left = 1 + self.maxDepth(left)
-            l_right = 1 + self.maxDepth(right)
-            
-            return max(h_left,l_right)
         
