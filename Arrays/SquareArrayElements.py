@@ -26,16 +26,8 @@ Follow up: Squaring each element and sorting the new array is very trivial, coul
 Accepted
 '''
 
-
 class Solution:
     def sortedSquares(self, nums: List[int]) -> List[int]:
-        
-        arr = []
-        for number in nums:
-            
-            arr.append(number**2)
-          
-            
       
-        return sorted(arr)
+        return sorted([num**2 for num in nums])
         
