@@ -34,14 +34,19 @@ n == height.length
 class Solution:
     def maxArea(self, height: List[int]) -> int:
         
-        maxarea = 0
+         m = 0
+        l = 0
+        r = len(height)-1
         
-        for i in range(len(height)):
+        while l < r:
+            currarea = min(height[l],height[r])*(r-l)
+            m = max(m,currarea)
             
-            for j in range(i+1,len(height)):
-                
-                temp = min(height[i],height[j])
-                maxarea = max(temp*(j-i),maxarea)
-                
-        return maxarea
+            if height[l] < height[r]:
+                l += 1
+            else:
+                r -= 1
+            
+        return m
+   
         
