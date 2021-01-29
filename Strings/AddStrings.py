@@ -23,11 +23,11 @@ class Solution:
         carry = 0
         s = 0
         res = []
-        while pA >= 0 and pB >= 0:
+         while pA >= 0 or pB >= 0:
             #Getting the numbers via the ord function and subtracting with 
             #ord('0') that returns the ASCII of 0.
-            numA = ord(num1[pA]) - ord('0')
-            numB = ord(num2[pB]) - ord('0')
+            numA = ord(num1[pA]) - ord('0') if pA >= 0 else 0
+            numB = ord(num2[pB]) - ord('0') if pB >= 0 else 0
             s = numA + numB + carry
             res.insert(0,str(s%10))
             carry = s//10
@@ -35,26 +35,15 @@ class Solution:
             pA -= 1
             pB -= 1
         
-        #If there are remaining characters of num1
-        while pA >= 0:
-            numA = ord(num1[pA]) - ord('0')
-            s = numA + carry
-            res.insert(0,str(s%10))
-            carry = s//10
-            pA -= 1
-        #If there are remaining characters of num2
-        while pB >= 0:
-            numB = ord(num2[pB]) - ord('0')
-            s = numB + carry
-            res.insert(0,str(s%10))
-            carry = s//10
-            pB -= 1
 
         #if carry has a value, add it to the front
         if carry:
             res.insert(0,str(carry))
 
         return ''.join(res)
+
+
+
 
 
 
