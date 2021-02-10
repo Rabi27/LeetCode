@@ -1,9 +1,10 @@
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
         
-        n = len(nums)//2
+        #We can use a HashMap that maps elements to counts in order to count 
+        #occurrences in linear time by looping over nums. Then, we simply return the key with         #maximum value.
+        counts = collections.Counter(nums)
         
-        for i in range(len(nums)):
-            
-            if nums.count(nums[i]) > n:
-                return nums[i]
+        return max(counts.keys(),key=counts.get)
+        
+        
