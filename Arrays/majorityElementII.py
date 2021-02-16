@@ -33,13 +33,14 @@ Output: [1,2]
 class Solution:
     def majorityElement(self, nums: List[int]) -> List[int]:
         
-        size = len(nums)
-        appear = size // 3
-        arr = []
-        for num in nums:
+        ans = []
+        
+        for v in set(nums):
             
-            if nums.count(num) > appear and num not in arr:
-                arr.append(num)
-        return arr
+            if nums.count(v) > (len(nums)//3):
+                ans.append(v)
                 
+        return ans
+                
+        
         
